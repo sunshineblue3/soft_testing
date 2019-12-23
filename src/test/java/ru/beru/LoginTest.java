@@ -12,9 +12,9 @@ public class LoginTest extends BaseTest {
 		System.out.println("First test");	
 		HomePage homePage = new HomePage(driver, wait);
 		homePage.goToUrl();
-		homePage.cancelWindow();
+		//homePage.cancelWindow();
 		homePage.signIn();
-		homePage.checkLogin("testBeruRu@yandex.ru");
+		//homePage.checkLogin("testBeruRu@yandex.ru");
 		homePage.checkButtonText();
 	}	
 	

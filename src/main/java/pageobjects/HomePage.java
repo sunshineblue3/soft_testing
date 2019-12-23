@@ -23,24 +23,24 @@ public class HomePage extends BasePage {
     // Локатор для кнопки "Войти в аккаунт"
     private By signInBtn = By.className("_3odNv2Dw2n");
     // Локатор для e-mail во всплывающем окне "Мой профиль"
-    private By loginBy = By.className("QLvVwuf9uh");
+    private By loginBy = By.xpath("/html/body/div[1]/div[1]/div/div/div/div/div/div/div/div/div[3]/div[2]/div/div[3]/div[1]/div/div/div[1]/div[2]/div/div/div[1]/div/div[2]/div[2]/span");
     // Локатор для отмены всплывающего окна с рекламой
     private By cancelBy = By.xpath("//div[@class='modal__cell']/div/div");
     // Локатор для выхода
-    private By logOut = By.xpath("//a[text()='Выход']");
+    private By logOut = By.xpath("/html/body/div[1]/div[1]/div/div/div/div/div/div/div/div/div[3]/div[2]/div/div[3]/div[1]/div/div/div[1]/div[2]/div/div/ul[4]/ul/li[2]/a/div");
 
     // Локаторы для второго теста
     // Ссылка на изменение города
     private By cityLinkBy = By.xpath("//span//span[@data-auto='region-form-opener']");
-
     // Поле ввода нового города
-    private By inputCityBy = By.xpath("*//input[@id='textfield110363492']");
+    private By inputCityBy = By.xpath("/html/body/div[10]/div/div/div[2]/div/div/div/div[2]/div/div/div/div/div/div/div/div/div/div/div/div[1]/div/div/input");
+    private By cityDelete = By.xpath("/html/body/div[10]/div/div/div[2]/div/div/div/div[2]/div/div/div/div/div/div/div/div/div/div/div/div[1]/div/div/div");
     // Список городов при вводе нового города
-    private By citiesList = By.className("_3cbAENw7oQ");
+    private By citiesList = By.xpath("//div[@id='react-autowhatever-region']");
     // Кнопка подтверждения выбора нового города
-    private By submitCityBy = By.className("_4qhIn2-ESi Pjv3h3YbYr THqSbzx07u");
+    private By submitCityBy = By.xpath("/html/body/div[10]/div/div/div[2]/div/div/div/div[2]/div/div/div/div/div/div/div/div[2]/div[2]/button");
     // Категория "Настройки" во всплывающем окне "Мой профиль"
-    private By settingsBy = By.className("header2-user-menu__item_type_settings");
+    private By settingsBy = By.xpath("/html/body/div[1]/div[1]/div/div/div/div/div/div/div/div/div[3]/div[2]/div/div[3]/div[1]/div/div/div[1]/div[2]/div/div/ul[3]/ul/li[3]/a");
 
     // Локаторы для третьего теста
     // Локатор для поискового поля
@@ -86,13 +86,15 @@ public class HomePage extends BasePage {
     // Метод изменения названия города
     public void changeCity(String newCity) {
         click(cityLinkBy);
+        click(inputCityBy);
+        click(cityDelete);
         wait.until(ExpectedConditions.visibilityOfElementLocated(inputCityBy));
         WebElement inputCity = driver.findElement(inputCityBy);
         inputCity.sendKeys(newCity);
         wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(citiesList));
         inputCity.sendKeys(Keys.ARROW_DOWN, Keys.ENTER);
         driver.findElement(submitCityBy).submit();
-        wait.until(ExpectedConditions.invisibilityOfElementLocated(inputCityBy));
+        //wait.until(ExpectedConditions.invisibilityOfElementLocated(inputCityBy));
     }
 
     // Метод, возвращающий текущий город
