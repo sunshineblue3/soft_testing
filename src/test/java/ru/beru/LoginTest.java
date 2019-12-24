@@ -14,7 +14,7 @@ public class LoginTest extends BaseTest {
 		homePage.goToUrl();
 		//homePage.cancelWindow();
 		homePage.signIn();
-		//homePage.checkLogin("testBeruRu@yandex.ru");
+		homePage.checkLogin("testBeruRu@yandex.ru");
 		homePage.checkButtonText();
 	}	
 	

@@ -17,7 +17,7 @@ public class ChangeCityTest extends BaseTest {
     }
 
     @Description("Check Change city functionality")
-    @Test(description="Check Change city functionality", dependsOnGroups = {"LoginTest"},
+    @Test(description="Check Change city functionality", /* dependsOnGroups = {"LoginTest"}, */
             dataProvider = "getNewCity")
     public void changeCity(String newCity) {
         HomePage homePage = new HomePage(driver, wait);
@@ -26,10 +26,10 @@ public class ChangeCityTest extends BaseTest {
         // Вызов метода изменения города
         homePage.changeCity(newCity);
         // Проверка, что название города изменилось
-        //homePage.checkCityHasChanged(newCity);
+        homePage.checkCityHasChanged(newCity);
         // Авторизация на сайте
-        //homePage.signIn();
-        //homePage.compareCityNames();
+        homePage.signIn();
+        homePage.compareCityNames();
     }
 
 }

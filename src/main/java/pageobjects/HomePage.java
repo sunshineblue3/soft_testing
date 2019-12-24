@@ -27,7 +27,7 @@ public class HomePage extends BasePage {
     // Локатор для отмены всплывающего окна с рекламой
     private By cancelBy = By.xpath("//div[@class='modal__cell']/div/div");
     // Локатор для выхода
-    private By logOut = By.xpath("/html/body/div[1]/div[1]/div/div/div/div/div/div/div/div/div[3]/div[2]/div/div[3]/div[1]/div/div/div[1]/div[2]/div/div/ul[4]/ul/li[2]/a/div");
+    private By logOut = By.xpath("/html/body/div[1]/div[1]/div/div/div/div/div/div/div/div/div[3]/div[2]/div/div[3]/div[1]/div/div/div[1]/div[2]/div/div/ul[4]/ul/li[2]/a");
 
     // Локаторы для второго теста
     // Ссылка на изменение города
@@ -93,8 +93,9 @@ public class HomePage extends BasePage {
         inputCity.sendKeys(newCity);
         wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(citiesList));
         inputCity.sendKeys(Keys.ARROW_DOWN, Keys.ENTER);
-        driver.findElement(submitCityBy).submit();
-        //wait.until(ExpectedConditions.invisibilityOfElementLocated(inputCityBy));
+        //driver.findElement(submitCityBy).submit();
+        click(submitCityBy);
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(inputCityBy));
     }
 
     // Метод, возвращающий текущий город

@@ -6,7 +6,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class SettingsPage extends BasePage {
 	//	Локатор для получения названия города на странице "Настройки"
-    private By cityBy = By.xpath("/html/body/div[1]/div[2]/div/div/div/div/div/div/div/div/div/div[2]/div/div[3]/div/div[2]/a/span");
+    private By cityBy = By.xpath("/html/body/div[1]/div[2]/div/div/div/div/div/div/div/div/div/div[2]/div/div[1]/div[2]/div/div[1]/div[1]/div/div/div/div/span/span/span");
 	
 	public SettingsPage(WebDriver driver, WebDriverWait wait) {
 		super(driver, wait);
