@@ -2,6 +2,7 @@ package ru.beru;
 
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+import io.qameta.allure.Description;
 import pageobjects.HomePage;
 
 public class ChangeCityTest extends BaseTest {
@@ -14,6 +15,7 @@ public class ChangeCityTest extends BaseTest {
                 {"Энгельс"} };
     }
 
+    @Description("Check Change city functionality")
     @Test(description="Check Change city functionality", groups = {"Login"}, dataProvider = "getNewCity")
     public void changeCity(String newCity) {
         HomePage homePage = new HomePage(driver, wait);

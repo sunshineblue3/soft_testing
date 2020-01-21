@@ -1,10 +1,12 @@
 package ru.beru;
 
 import org.testng.annotations.Test;
+import io.qameta.allure.Description;
 import pageobjects.HomePage;
 
 public class LoginTest extends BaseTest {
 
+	@Description("Verify login functionality")
 	@Test(description="Verify login functionality", groups = {"Login"})
 	public void validSignIn() {
 		System.out.println("Login test started");

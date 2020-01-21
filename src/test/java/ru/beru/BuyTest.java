@@ -2,6 +2,7 @@ package ru.beru;
 
 import org.testng.annotations.Test;
 
+import io.qameta.allure.Description;
 import pageobjects.HomePage;
 import pageobjects.PurchasePage;
 import pageobjects.SearchPage;
@@ -10,6 +11,7 @@ import ru.beru.BaseTest;
 public class BuyTest extends BaseTest {
 
     @Test(description="Check buy product functionality", groups = {"Search"})
+    @Description("Check buy product functionality")
     public void buyElem() {
         HomePage homePage = new HomePage(driver, wait);
         homePage.goToUrl();

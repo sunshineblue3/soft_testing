@@ -1,12 +1,14 @@
 package pageobjects;
 
 import io.qameta.allure.Step;
+import utils.ScreenshotMaker;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+import pageobjects.PurchasePage;
 
 import java.util.List;
 
@@ -91,20 +93,23 @@ public class SearchPage extends BasePage {
 		wait.until(ExpectedConditions.elementToBeClickable(goToBasketBy));
 		click(goToBasketBy);
 		return true;
-	}	
+	}
 
+	@Step("Input price limits")
 	public void inputPriceLimits() {
 		setPriceFrom("999");
 		setPriceTo("1999");
 	}
 	
 	// Проверка того, что отображаются щетки с ценами в заданном диапазоне
+	@Step("Check that brushes are displayed with prices in the specified range")
 	public void checkPricesInRange() {
 		Assert.assertTrue(checkPrice(), "Price doesn't match");
 	}
 	
 	// Проверка того, что список содержит по крайней мере 2 элемента,
 	// т.е. существует возможность купить предпоследнюю щетку
+	@Step("Check that the list contains at least 2 elements and it possible to buy the last but one")
 	public void checkIfCanBuy() {
 		Assert.assertTrue(buyProduct(), "List length is not correct");
 	}

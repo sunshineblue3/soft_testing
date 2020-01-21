@@ -7,7 +7,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
-//import utils.ScreenshotMaker;
+import io.qameta.allure.Step;
+import utils.ScreenshotMaker;
 
 
 public class PurchasePage extends BasePage{
@@ -56,10 +57,10 @@ public class PurchasePage extends BasePage{
 
     // Проверка того, что итоговая цена равна <стоимость щетки> - <скидка>
     // и сумма до бесплатной доставки равна <2499> - <стоимость щетки> - <скидка>
+    @Step("Check prices")
     public void checkPrice(double productPrice, double deliveryPrice, double discount) {
         curPrice = productPrice - discount;
-        //double wholeSum = getPrice(priceBy);
-        Assert.assertTrue( getPrice(priceBy) == (curPrice), "Price doesn't correct");
+        Assert.assertTrue(getPrice(priceBy) == (curPrice), "Price doesn't correct");
         try {
             driver.findElement(freeDeliveryBy);
             double sum = getPrice(freeDeliveryBy);
@@ -91,15 +92,18 @@ public class PurchasePage extends BasePage{
     }
 
     // Проверка значения "До бесплатной доставки осталось"
+    @Step("Check prices")
     public void checkToFreeDelivery() {
         Assert.assertTrue(0.0 != isFreeDelivery(), "Delivery is already free");
     }
 
+    @Step("Check prices")
     public void checkIsFreeDelivery() {
         Assert.assertEquals(0.0, isFreeDelivery(), "Delivery doesn't free");
     }
 
     // Получение суммы скидки
+    @Step("Get prices")
     public void getPrices() {
         wait.until(ExpectedConditions.elementToBeClickable(goTo));
         productPrice = getPrice(productCostBy);

@@ -12,6 +12,7 @@ import org.openqa.selenium.support.ui.ISelect;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
+import io.qameta.allure.Step;
 import pageobjects.SettingsPage;
 
 import pageobjects.BasePage;
@@ -130,27 +131,32 @@ public class HomePage extends BasePage {
     }
 
     // Авторизация
+    @Step("Sign in")
     public void signIn() {
         SignInPage signInPage = clickSignInBtn();
         signInPage.signIn("testBeruRu@yandex.ru", "kulikandlake");
     }
 
     // Проверка, что после входа отображается логин
+    @Step("Verify that login is displayed on the main page")
     public void checkLogin(String login) {
         Assert.assertEquals(getLogin(), login, "Check login error");
     }
 
     // Проверка, что кнопка "Войти в аккаунт" изменилась на "Мой профиль"
+    @Step("Checking that the \"Login to Account\" button has changed to \"My Profile\"")
     public void checkButtonText() {
         Assert.assertTrue(phraseChange(), "Check ButtonText \"My Profile\" error");
     }
 
     // Проверка, что название города изменилось
+    @Step("Check that the city name has changed")
     public void checkCityHasChanged(String newCity) {
         Assert.assertEquals(getCity().trim(), newCity.trim(), "City name hasn't changed");
     }
 
     // Сравнение значения города в верхнем углу и города доставки на странице "Настройки"
+    @Step("Check that after authorization the city name in the upper corner and the city of delivery match")
     public void compareCityNames() {
         Assert.assertEquals(goToSettings().getDeliveryCity().trim(), getCity().trim(),
                 "Delivery city and current city doesn't match");
