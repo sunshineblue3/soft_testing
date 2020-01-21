@@ -101,6 +101,7 @@ public class PurchasePage extends BasePage{
 
     // Получение суммы скидки
     public void getPrices() {
+        wait.until(ExpectedConditions.elementToBeClickable(goTo));
         productPrice = getPrice(productCostBy);
         deliveryPrice = getPrice(deliveryCostBy);
         discount = 0;
